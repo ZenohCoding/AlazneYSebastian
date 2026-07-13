@@ -7,7 +7,7 @@
   // --- Terminal-style boot sequence ---
   const bootLines = document.getElementById('boot-lines');
   const sequence = [
-    'iniciando nosotros.exe',
+    'iniciando skibidi dop dop dop.exe',
     'cargando recuerdos...  [OK]',
     'sincronizando latidos...  [OK]',
     'calculando tiempo juntos...'
