@@ -1,77 +1,56 @@
-document.body.style.background = "#222";
+function debug(msg) {
+  let box = document.getElementById("updater-debug");
 
-document.body.insertAdjacentHTML(
-  "beforeend",
-  `
-  <div id="debug-box" style="
-    position:fixed;
-    top:20px;
-    left:20px;
-    right:20px;
-    z-index:999999;
-    background:#111;
-    color:#00ff00;
-    padding:20px;
-    font-family:monospace;
-    white-space:pre-wrap;
-    border:2px solid #00ff00;
-    max-height:80vh;
-    overflow:auto;
-  ">
-  Loading updater...
-  </div>
-`
-);
+  if (!box) {
+    box = document.createElement("div");
+    box.id = "updater-debug";
+    box.style.position = "fixed";
+    box.style.bottom = "10px";
+    box.style.right = "10px";
+    box.style.background = "black";
+    box.style.color = "lime";
+    box.style.padding = "10px";
+    box.style.zIndex = "999999";
+    box.style.fontFamily = "monospace";
+    document.body.appendChild(box);
+  }
 
-function log(msg) {
-  console.log(msg);
-  document.getElementById("debug-box").innerHTML += "\n" + msg;
+  box.innerHTML += "<br>" + msg;
 }
 
-log("✅ updater.js loaded");
+window.addEventListener("DOMContentLoaded", async () => {
+  debug("Updater started");
 
-(async () => {
+  if (!window.__TAURI__) {
+    debug("ERROR: window.__TAURI__ is undefined. Check withGlobalTauri in tauri.conf.json");
+    return;
+  }
+
+  if (!window.__TAURI__.updater) {
+    debug("ERROR: updater plugin not found on window.__TAURI__. Check Rust plugin registration.");
+    return;
+  }
+
   try {
-    log("Importing updater...");
+    const { check } = window.__TAURI__.updater;
+    const { relaunch } = window.__TAURI__.process;
 
-    const updater = await import("@tauri-apps/plugin-updater");
-
-    log("✅ updater imported");
-
-    const process = await import("@tauri-apps/api/process");
-
-    log("✅ process imported");
-
-    log("Checking for updates...");
-
-    const update = await updater.check();
+    const update = await check();
 
     if (!update) {
-      log("❌ No update available.");
+      debug("No update found");
       return;
     }
 
-    log("✅ Update found!");
-
-    log("Current: " + update.currentVersion);
-    log("Latest : " + update.version);
-
-    log("Downloading...");
+    debug(`Current: ${update.currentVersion}`);
+    debug(`Latest: ${update.version}`);
 
     await update.downloadAndInstall();
 
-    log("✅ Installed");
+    debug("Installed!");
 
-    log("Restarting...");
-
-    await process.relaunch();
-
+    await relaunch();
   } catch (e) {
-    log("💥 ERROR:");
-    log(String(e));
-
-    if (e.stack) {
-      log(e.stack);
-    }
+    debug("Error: " + String(e));
   }
-})();
+});
