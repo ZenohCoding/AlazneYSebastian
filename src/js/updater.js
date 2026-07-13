@@ -1,35 +1,55 @@
-import { check } from '@tauri-apps/plugin-updater';
-import { relaunch } from '@tauri-apps/api/process';
+import { check } from "@tauri-apps/plugin-updater";
+import { relaunch } from "@tauri-apps/api/process";
 
 async function checkForUpdates() {
-    try {
-        console.log("Checking for updates...");
-        
-        // Check if an update is available based on your remote update.json
-        const update = await check();
-        
-        if (update) {
-            console.log(`New update found! Current version: ${update.currentVersion} -> New version: ${update.version}`);
-            
-            // You can optionally update your UI here (e.g., showing a status text like "Downloading update...")
-            console.log("Downloading and installing update...");
-            
-            // This downloads and installs the update bundle securely
-            await update.downloadAndInstall();
-            
-            console.log("Update installed successfully! Relaunching application...");
-            
-            // Restarts the application to apply the update immediately
-            await relaunch();
-        } else {
-            console.log("Application is already up to date.");
-        }
-    } catch (error) {
-        console.error("Failed to check or install update:", error);
+  alert("🚀 Updater started");
+
+  try {
+    alert("🔍 Checking GitHub for updates...");
+
+    const update = await check();
+
+    alert("✅ check() finished");
+
+    if (!update) {
+      alert("❌ No update available (check() returned null)");
+      return;
     }
+
+    alert(
+      "🎉 UPDATE FOUND!\n\n" +
+      "Current Version: " + update.currentVersion + "\n" +
+      "Latest Version: " + update.version
+    );
+
+    alert("⬇️ Starting download...");
+
+    await update.downloadAndInstall();
+
+    alert("✅ Download and installation completed!");
+
+    alert("🔄 Relaunching app...");
+
+    await relaunch();
+  } catch (err) {
+    alert(
+      "💥 ERROR!\n\n" +
+      "Type: " + typeof err + "\n\n" +
+      "Message:\n" + String(err)
+    );
+
+    if (err?.message) {
+      alert("Error message:\n\n" + err.message);
+    }
+
+    if (err?.stack) {
+      alert("Stack:\n\n" + err.stack);
+    }
+
+    alert("JSON:\n\n" + JSON.stringify(err, null, 2));
+  }
 }
 
-// Automatically trigger the update check as soon as the DOM is ready
-window.addEventListener('DOMContentLoaded', () => {
-    checkForUpdates();
-}); 
+window.addEventListener("DOMContentLoaded", () => {
+  checkForUpdates();
+});
