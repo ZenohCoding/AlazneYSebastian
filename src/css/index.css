@@ -1,0 +1,240 @@
+/* ============================================
+   Landing page
+   ============================================ */
+
+body {
+  background:
+    radial-gradient(ellipse at 15% 10%, var(--yellow-100) 0%, transparent 55%),
+    radial-gradient(ellipse at 85% 90%, var(--blue-100) 0%, transparent 55%),
+    var(--cream);
+}
+
+.glow-1 {
+  width: 34vw; height: 34vw;
+  top: -8vw; left: -8vw;
+  background: var(--yellow-300);
+  opacity: 0.45;
+}
+.glow-2 {
+  width: 30vw; height: 30vw;
+  bottom: -10vw; right: -6vw;
+  background: var(--blue-300);
+  opacity: 0.4;
+  animation-delay: -9s;
+}
+
+/* --- Boot screen (plays once on load) --- */
+.boot-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  background: var(--navy-900);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  animation: boot-fade-out 0.8s ease forwards 3.6s;
+}
+
+.boot-screen.skip { display: none; }
+
+@keyframes boot-fade-out {
+  to { opacity: 0; visibility: hidden; pointer-events: none; }
+}
+
+.boot-lines {
+  font-family: var(--font-mono);
+  font-size: clamp(0.85rem, 2.4vw, 1.05rem);
+  color: var(--yellow-300);
+  white-space: pre-wrap;
+  line-height: 1.9;
+  max-width: 34rem;
+}
+
+.boot-lines .ok { color: var(--blue-300); }
+.boot-lines .cursor {
+  display: inline-block;
+  width: 0.55em;
+  background: var(--yellow-300);
+  animation: blink 0.9s steps(1) infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+/* --- Hero --- */
+.hero {
+  position: relative;
+  z-index: 2;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 1.6rem;
+  padding: 2rem;
+  opacity: 0;
+  animation: hero-in 1s ease forwards 3.9s;
+}
+
+@keyframes hero-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--blue-700);
+  opacity: 0;
+  animation: fade-up 0.9s ease forwards 4.1s;
+}
+
+.question {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(3.2rem, 11.5vw, 6.6rem);
+  line-height: 1.02;
+  color: var(--navy-900);
+  opacity: 0;
+  animation: fade-up 1s ease forwards 4.35s;
+}
+
+.question .highlight {
+  position: relative;
+  font-style: italic;
+  background: linear-gradient(90deg, var(--blue-700), var(--yellow-700), var(--blue-700));
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer-sweep 5s linear infinite;
+}
+
+.hero-sub {
+  font-family: var(--font-script);
+  font-size: clamp(1.45rem, 3.6vw, 1.95rem);
+  color: var(--navy-600);
+  line-height: 1.35;
+  opacity: 0;
+  animation: fade-up 1s ease forwards 4.6s;
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Ver button --- */
+.ver-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 0.6rem;
+  padding: 1.3rem 3.1rem;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 1.3rem;
+  letter-spacing: 0.02em;
+  color: var(--navy-900);
+  background: var(--paper);
+  border-radius: 999px;
+  overflow: hidden;
+  box-shadow:
+    0 0 0 2px var(--yellow-500) inset,
+    0 10px 28px -10px rgba(44, 95, 135, 0.5);
+  opacity: 0;
+  animation: fade-up 1s ease forwards 4.85s, pulse-glow 2.6s ease-in-out infinite 6s;
+  transition: transform 0.35s cubic-bezier(.34,1.56,.64,1), box-shadow 0.35s ease;
+}
+
+.ver-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, transparent 30%, rgba(255,255,255,0.75) 50%, transparent 70%);
+  transform: translateX(-120%);
+  transition: transform 0.7s ease;
+}
+
+.ver-btn:hover::before { transform: translateX(120%); }
+
+.ver-btn-code {
+  font-family: var(--font-mono);
+  color: var(--blue-700);
+}
+
+.ver-btn:hover,
+.ver-btn:focus-visible {
+  transform: translate(var(--mx, 0px), var(--my, 0px)) translateY(-3px) scale(1.045);
+  box-shadow:
+    0 0 0 2px var(--blue-700) inset,
+    0 14px 34px -8px rgba(44, 95, 135, 0.65);
+}
+
+.ver-btn:active { transform: translate(var(--mx, 0px), var(--my, 0px)) translateY(0) scale(0.97); }
+
+.ver-btn-arrow { display: inline-block; transition: transform 0.35s ease; }
+.ver-btn:hover .ver-btn-arrow { transform: translateX(5px); }
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 2px var(--yellow-500) inset, 0 10px 28px -10px rgba(44,95,135,0.5); }
+  50%      { box-shadow: 0 0 0 2px var(--yellow-500) inset, 0 10px 40px -4px rgba(44,95,135,0.75); }
+}
+
+.hero .flourish {
+  margin-top: 1.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  opacity: 0;
+  animation: fade-up 1s ease forwards 5.15s;
+}
+
+/* --- Ambient binary hearts --- */
+.ambient-hearts { position: fixed; inset: 0; z-index: 1; overflow: hidden; }
+
+.mini-heart {
+  position: absolute;
+  bottom: -10%;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--blue-700);
+  opacity: 0;
+  white-space: nowrap;
+  animation-name: float-up;
+  animation-timing-function: ease-in;
+  animation-iteration-count: infinite;
+}
+
+.mini-heart.is-glyph { font-family: var(--font-body); color: var(--pink-400); }
+
+@keyframes float-up {
+  0%   { opacity: 0; transform: translateY(0) translateX(0) rotate(0deg); }
+  10%  { opacity: 0.55; }
+  85%  { opacity: 0.35; }
+  100% { opacity: 0; transform: translateY(-115vh) translateX(var(--drift, 30px)) rotate(20deg); }
+}
+
+.transition-veil {
+  position: fixed;
+  inset: 0;
+  z-index: 25;
+  background: radial-gradient(circle at 50% 50%, var(--blue-300) 0%, var(--blue-700) 100%);
+  clip-path: circle(0% at 50% 50%);
+  pointer-events: none;
+}
+
+.transition-veil.active {
+  clip-path: circle(150% at 50% 50%);
+  transition: clip-path 0.9s cubic-bezier(.65,0,.35,1);
+}
+
+@media (max-width: 480px) {
+  .boot-lines { font-size: 0.78rem; }
+}

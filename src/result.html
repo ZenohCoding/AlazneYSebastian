@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sebastián &amp; Alazne — nuestro tiempo</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/result.css">
+  <link rel="stylesheet" href="css/enhance.css">
+</head>
+<body>
+
+  <svg class="grain" aria-hidden="true">
+    <filter id="noiseFilter3"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch"/></filter>
+    <rect width="100%" height="100%" filter="url(#noiseFilter3)"/>
+  </svg>
+
+  <div class="glow-orb glow-1" aria-hidden="true"></div>
+  <div class="glow-orb glow-2" aria-hidden="true"></div>
+
+  <div id="ambient-hearts" class="ambient-hearts" aria-hidden="true"></div>
+
+  <main class="result-stage">
+
+    <p class="names-tag">Sebastián <span class="heart-glyph">♥</span> Alazne</p>
+
+    <h1 class="result-title">Llevamos juntos</h1>
+
+    <div class="terminal-card" id="counter-grid">
+      <div class="terminal-bar">
+        <span class="dot dot-y"></span>
+        <span class="dot dot-b"></span>
+        <span class="dot dot-n"></span>
+        <span class="terminal-label">contador_de_nosotros.exe</span>
+      </div>
+      <div class="terminal-body">
+        <div class="counter-row">
+          <div class="counter-unit">
+            <span class="counter-number" id="c-years">0</span>
+            <span class="counter-label">años</span>
+          </div>
+          <div class="counter-unit">
+            <span class="counter-number" id="c-months">0</span>
+            <span class="counter-label">meses</span>
+          </div>
+          <div class="counter-unit">
+            <span class="counter-number" id="c-days">0</span>
+            <span class="counter-label">días</span>
+          </div>
+          <div class="counter-unit">
+            <span class="counter-number" id="c-hours">00</span>
+            <span class="counter-label">horas</span>
+          </div>
+          <div class="counter-unit">
+            <span class="counter-number" id="c-minutes">00</span>
+            <span class="counter-label">min</span>
+          </div>
+          <div class="counter-unit accent">
+            <span class="counter-number" id="c-seconds">00</span>
+            <span class="counter-label">seg</span>
+          </div>
+        </div>
+        <p class="terminal-since">$ desde el 23 de mayo de 2026, 06:52 &mdash; <span class="terminal-status">ejecutándose</span><span class="terminal-cursor">&nbsp;</span></p>
+      </div>
+    </div>
+
+    <div class="totals-row" id="totals-row">
+      <div class="totals-item">
+        <span class="totals-number" id="t-days">0</span>
+        <span class="totals-label">días exactos juntos</span>
+      </div>
+      <div class="totals-item">
+        <span class="totals-number" id="t-hours">0</span>
+        <span class="totals-label">horas exactas juntos</span>
+      </div>
+    </div>
+
+    <p class="closing-message" id="closing-message"></p>
+
+    <a href="letter.html" class="letter-cta" id="letter-cta" data-magnetic>
+      <span class="letter-cta-icon">💌</span>
+      <span class="letter-cta-text">Tienes una carta esperando</span>
+      <span class="letter-cta-arrow">→</span>
+    </a>
+
+    <nav class="hub-nav" aria-label="más para explorar">
+      <a href="razones.html" class="hub-link"><span class="hub-link-icon">✦</span> 100 razones</a>
+      <a href="galeria.html" class="hub-link"><span class="hub-link-icon">🕐</span> nuestra línea del tiempo</a>
+      <a href="encuentro.html" class="hub-link"><span class="hub-link-icon">📱</span> cómo nos conocimos</a>
+    </nav>
+
+    <a href="index.html" class="replay-link">
+      <span class="replay-icon">↺</span> volver a empezar
+    </a>
+
+  </main>
+
+  <script src="js/enhance.js"></script>
+  <script src="js/result.js"></script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sebastián &amp; Alazne — razones</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/enhance.css">
+  <link rel="stylesheet" href="css/razones.css">
+</head>
+<body>
+
+  <svg class="grain" aria-hidden="true">
+    <filter id="noiseFilter5"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch"/></filter>
+    <rect width="100%" height="100%" filter="url(#noiseFilter5)"/>
+  </svg>
+
+  <div class="glow-orb glow-1" aria-hidden="true"></div>
+  <div class="glow-orb glow-2" aria-hidden="true"></div>
+
+  <div id="ambient-hearts" class="ambient-hearts" aria-hidden="true"></div>
+
+  <a href="result.html" class="back-link">← volver</a>
+
+  <main class="razones-stage">
+
+    <header class="razones-header reveal">
+      <p class="eyebrow">un archivo que nunca deja de crecer</p>
+      <h1 class="razones-title">Razones para quererte</h1>
+      <p class="razones-sub">No caben todas. Pero aquí va un intento, numerado como los buenos archivos de registro.</p>
+      <p class="razones-counter"><span id="razones-count">0</span> de <span id="razones-total">0</span> cargadas</p>
+    </header>
+
+    <div class="razones-grid" id="razones-grid"></div>
+
+    <p class="razones-footnote reveal">y mañana habrá una más que hoy todavía no he escrito.</p>
+
+    <nav class="hub-nav" aria-label="más para explorar">
+      <a href="galeria.html" class="hub-link"><span class="hub-link-icon">🕐</span> nuestra línea del tiempo</a>
+      <a href="letter.html" class="hub-link"><span class="hub-link-icon">💌</span> la carta</a>
+      <a href="result.html" class="hub-link"><span class="hub-link-icon">↺</span> volver al contador</a>
+    </nav>
+
+  </main>
+
+  <script src="js/enhance.js"></script>
+  <script src="js/razones.js"></script>
+</body>
+</html>

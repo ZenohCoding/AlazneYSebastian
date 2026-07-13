@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sebastián &amp; Alazne — el camino</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/journey.css">
+  <link rel="stylesheet" href="css/enhance.css">
+</head>
+<body>
+
+  <svg class="grain" aria-hidden="true">
+    <filter id="noiseFilter2"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch"/></filter>
+    <rect width="100%" height="100%" filter="url(#noiseFilter2)"/>
+  </svg>
+
+  <div class="glow-orb glow-1" aria-hidden="true"></div>
+  <div class="glow-orb glow-2" aria-hidden="true"></div>
+
+  <div class="journey-stage">
+
+    <svg id="journey-svg" class="journey-svg" viewBox="0 0 1200 650" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+      <defs>
+        <linearGradient id="pathGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%"   stop-color="#C9860F"/>
+          <stop offset="45%"  stop-color="#F0B429"/>
+          <stop offset="75%"  stop-color="#9AD1F5"/>
+          <stop offset="100%" stop-color="#2C5F87"/>
+        </linearGradient>
+        <filter id="softGlow" x="-60%" y="-60%" width="220%" height="220%">
+          <feGaussianBlur stdDeviation="7" result="blur"/>
+          <feMerge>
+            <feMergeNode in="blur"/>
+            <feMergeNode in="SourceGraphic"/>
+          </feMerge>
+        </filter>
+      </defs>
+
+      <path id="journey-path-glow"
+            d="M -60 320
+               C 90 120 150 480 340 320
+               C 460 210 420 90 560 130
+               A 62 62 0 1 1 560 129
+               C 700 165 660 430 830 400
+               C 950 378 900 190 1040 210
+               A 56 56 0 1 1 1040 209
+               C 1120 222 1160 400 1280 360"
+            fill="none" stroke="url(#pathGradient)" stroke-width="10"
+            stroke-linecap="round" opacity="0.35" filter="url(#softGlow)"/>
+
+      <path id="journey-path"
+            d="M -60 320
+               C 90 120 150 480 340 320
+               C 460 210 420 90 560 130
+               A 62 62 0 1 1 560 129
+               C 700 165 660 430 830 400
+               C 950 378 900 190 1040 210
+               A 56 56 0 1 1 1040 209
+               C 1120 222 1160 400 1280 360"
+            fill="none" stroke="url(#pathGradient)" stroke-width="3.5"
+            stroke-linecap="round"/>
+
+      <g id="milestone-layer" aria-hidden="true"></g>
+
+      <g id="arrow-head" class="arrow-head">
+        <circle class="arrow-halo" cx="0" cy="0" r="10" />
+        <text x="0" y="7" text-anchor="middle" font-size="28">➔</text>
+      </g>
+    </svg>
+
+    <div id="heart-layer" class="heart-layer" aria-hidden="true"></div>
+
+    <div class="caption-stack">
+      <p id="journey-caption" class="journey-caption"></p>
+    </div>
+
+    <button id="skip-btn" class="skip-btn" data-magnetic>Saltar →</button>
+  </div>
+
+  <div id="transition-veil" class="transition-veil" aria-hidden="true"></div>
+
+  <script src="js/enhance.js"></script>
+  <script src="js/journey.js"></script>
+</body>
+</html>

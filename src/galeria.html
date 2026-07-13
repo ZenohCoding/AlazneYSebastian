@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sebastián &amp; Alazne — nuestra línea del tiempo</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/enhance.css">
+  <link rel="stylesheet" href="css/galeria.css">
+</head>
+<body>
+
+  <svg class="grain" aria-hidden="true">
+    <filter id="noiseFilter6"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch"/></filter>
+    <rect width="100%" height="100%" filter="url(#noiseFilter6)"/>
+  </svg>
+
+  <div class="glow-orb glow-1" aria-hidden="true"></div>
+  <div class="glow-orb glow-2" aria-hidden="true"></div>
+
+  <div id="ambient-hearts" class="ambient-hearts" aria-hidden="true"></div>
+
+  <a href="result.html" class="back-link">← volver</a>
+
+  <main class="timeline-stage">
+
+    <header class="timeline-header reveal">
+      <p class="eyebrow">un mapa, no un final</p>
+      <h1 class="timeline-title">Nuestra línea del tiempo</h1>
+      <p class="timeline-sub">Algunos de los puntos que nos trajeron hasta aquí.</p>
+    </header>
+
+    <div class="timeline" id="timeline">
+      <div class="timeline-line" aria-hidden="true">
+        <div class="timeline-line-fill" id="timeline-fill"></div>
+      </div>
+      <div class="timeline-items" id="timeline-items"></div>
+    </div>
+
+    <p class="timeline-footnote reveal">y el siguiente punto todavía se está escribiendo.</p>
+
+    <nav class="hub-nav" aria-label="más para explorar">
+      <a href="razones.html" class="hub-link"><span class="hub-link-icon">✦</span> 100 razones</a>
+      <a href="letter.html" class="hub-link"><span class="hub-link-icon">💌</span> la carta</a>
+      <a href="result.html" class="hub-link"><span class="hub-link-icon">↺</span> volver al contador</a>
+    </nav>
+
+  </main>
+
+  <script src="js/enhance.js"></script>
+  <script src="js/galeria.js"></script>
+</body>
+</html>

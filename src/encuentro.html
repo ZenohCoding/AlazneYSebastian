@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sebastián &amp; Alazne — cómo nos conocimos</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/encuentro.css">
+  <link rel="stylesheet" href="css/enhance.css">
+</head>
+<body>
+
+  <svg class="grain" aria-hidden="true">
+    <filter id="noiseFilter4"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch"/></filter>
+    <rect width="100%" height="100%" filter="url(#noiseFilter4)"/>
+  </svg>
+
+  <div class="glow-orb glow-1" aria-hidden="true"></div>
+  <div class="glow-orb glow-2" aria-hidden="true"></div>
+
+  <div id="ambient-hearts" class="ambient-hearts" aria-hidden="true"></div>
+
+  <div class="progress-rail" aria-hidden="true"><div class="progress-fill" id="progress-fill"></div></div>
+
+  <div class="encuentro-stage">
+
+    <!-- Acto 1 — el móvil, en 3D, la primera conversación -->
+    <section class="act act-phone" id="act-phone">
+      <p class="act-caption" id="caption-phone">Todo empezó en una conversación de Instagram, sin darnos cuenta de a dónde nos llevaría.</p>
+      <div class="phone-scene">
+        <div class="phone" id="phone-el">
+          <div class="phone-shine" aria-hidden="true"></div>
+          <div class="phone-notch" aria-hidden="true"></div>
+          <div class="phone-screen">
+            <div class="chat-header">
+              <span class="chat-avatar contact-alazne" id="chat-avatar">A</span>
+              <div class="chat-header-text" id="chat-header-text">
+                <span class="chat-name" id="chat-name">Alazne</span>
+                <span class="chat-status" id="chat-status">escribiendo…</span>
+              </div>
+            </div>
+            <div class="chat-body" id="chat-body"></div>
+          </div>
+        </div>
+        <div class="phone-hearts" id="phone-hearts" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <!-- Acto 2 — el tren hacia conocerse en persona -->
+    <section class="act act-train" id="act-train">
+      <p class="act-caption caption-dark" id="caption-train">Después de tanto hablar, llegó el día de conocernos de verdad.</p>
+      <div class="train-scene">
+        <div class="sky" aria-hidden="true"></div>
+        <div class="sun" aria-hidden="true"></div>
+        <div class="clouds" aria-hidden="true">
+          <span class="cloud c1"></span><span class="cloud c2"></span><span class="cloud c3"></span>
+        </div>
+        <div class="hills" aria-hidden="true"></div>
+        <div class="rail" aria-hidden="true"></div>
+        <div class="smoke-layer" id="smoke-layer" aria-hidden="true"></div>
+        <svg class="train-svg" id="train-svg" viewBox="0 0 260 130" aria-hidden="true">
+          <g id="train-body">
+            <rect x="18" y="34" width="150" height="52" rx="10" fill="#2C5F87"/>
+            <rect x="18" y="34" width="150" height="20" rx="10" fill="#4B93C7"/>
+            <rect x="34" y="42" width="22" height="18" rx="3" fill="#FFF6DE"/>
+            <rect x="68" y="42" width="22" height="18" rx="3" fill="#FFF6DE"/>
+            <rect x="102" y="42" width="22" height="18" rx="3" fill="#FFF6DE"/>
+            <rect x="136" y="42" width="22" height="18" rx="3" fill="#FFF6DE"/>
+            <rect x="150" y="14" width="14" height="24" rx="4" fill="#1F2A40"/>
+            <rect x="0" y="58" width="20" height="28" rx="6" fill="#F0B429"/>
+            <text x="8" y="70" font-size="12" fill="#E8879A">♥</text>
+            <circle cx="46" cy="92" r="13" fill="#1F2A40" class="wheel"/>
+            <circle cx="46" cy="92" r="5" fill="#FFE29A" class="wheel"/>
+            <circle cx="94" cy="92" r="13" fill="#1F2A40" class="wheel"/>
+            <circle cx="94" cy="92" r="5" fill="#FFE29A" class="wheel"/>
+            <circle cx="142" cy="92" r="13" fill="#1F2A40" class="wheel"/>
+            <circle cx="142" cy="92" r="5" fill="#FFE29A" class="wheel"/>
+          </g>
+        </svg>
+      </div>
+    </section>
+
+    <!-- Acto 3 — el encuentro, el abrazo, el corazón -->
+    <section class="act act-hug" id="act-hug">
+      <p class="act-caption" id="caption-hug">Y ahí estabas. Un abrazo, y el corazón a mil por hora.</p>
+      <div class="hug-scene">
+        <div class="figure figure-him" id="figure-him">
+          <div class="fig-hair fig-hair-him" aria-hidden="true"></div>
+          <div class="fig-head">
+            <span class="fig-face" aria-hidden="true">
+              <span class="fig-eye fig-eye-l"></span><span class="fig-eye fig-eye-r"></span>
+              <span class="fig-smile"></span>
+            </span>
+          </div>
+          <div class="fig-body"></div>
+          <div class="fig-arm" aria-hidden="true"></div>
+          <div class="fig-shadow" aria-hidden="true"></div>
+        </div>
+        <div class="figure figure-her" id="figure-her">
+          <div class="fig-hair" aria-hidden="true"></div>
+          <div class="fig-head">
+            <span class="fig-face" aria-hidden="true">
+              <span class="fig-eye fig-eye-l"></span><span class="fig-eye fig-eye-r"></span>
+              <span class="fig-blush fig-blush-l"></span><span class="fig-blush fig-blush-r"></span>
+              <span class="fig-smile"></span>
+            </span>
+          </div>
+          <div class="fig-body"></div>
+          <div class="fig-arm" aria-hidden="true"></div>
+          <div class="fig-shadow" aria-hidden="true"></div>
+        </div>
+        <div class="heart-rings" id="heart-rings" aria-hidden="true"></div>
+        <div class="heart-beat" id="heart-beat">♥</div>
+      </div>
+    </section>
+
+    <!-- Acto 4 — felices, muchas más citas -->
+    <section class="act act-montage" id="act-montage">
+      <p class="act-caption" id="caption-montage">Y desde aquel día...</p>
+      <div class="montage-cards" id="montage-cards"></div>
+    </section>
+
+  </div>
+
+  <button id="skip-btn" class="skip-btn" data-magnetic>Saltar →</button>
+
+  <div id="transition-veil" class="transition-veil veil-intro" aria-hidden="true"></div>
+
+  <script src="js/enhance.js"></script>
+  <script src="js/encuentro.js"></script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sebastián &amp; Alazne — la carta</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/letter.css">
+  <link rel="stylesheet" href="css/enhance.css">
+</head>
+<body>
+
+  <svg class="grain" aria-hidden="true">
+    <filter id="noiseFilter4"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch"/></filter>
+    <rect width="100%" height="100%" filter="url(#noiseFilter4)"/>
+  </svg>
+
+  <div class="glow-orb glow-1" aria-hidden="true"></div>
+  <div class="glow-orb glow-2" aria-hidden="true"></div>
+
+  <div id="ambient-hearts" class="ambient-hearts" aria-hidden="true"></div>
+
+  <a href="result.html" class="back-link">← volver</a>
+
+  <!-- ===================== ENVELOPE SCENE ===================== -->
+  <main id="envelope-scene" class="envelope-scene">
+
+    <p class="eyebrow">tienes correo — para Alazne</p>
+    <h1 class="envelope-title">Abre la carta</h1>
+    <p class="envelope-sub">Mantén pulsado y arrastra hacia arriba<br class="mobile-break"> para sacarla del sobre.</p>
+
+    <div class="envelope-stage">
+      <div id="envelope" class="envelope" style="--progress: 0;">
+        <div class="paper" id="paper">
+          <div class="paper-lines" aria-hidden="true"></div>
+          <span class="paper-peek">S ♥ A</span>
+        </div>
+        <div class="envelope-pocket"></div>
+        <div class="envelope-flap">
+          <div class="wax-seal">S&amp;A</div>
+        </div>
+        <div class="envelope-body"></div>
+      </div>
+
+      <div class="drag-hint" id="drag-hint">
+        <span class="drag-hint-arrow">↑</span>
+        <span class="drag-hint-text">arrastra</span>
+      </div>
+    </div>
+
+    <button id="tap-open" class="tap-open" data-magnetic>o simplemente toca aquí para abrirla</button>
+
+  </main>
+
+  <!-- ===================== READING SCENE ===================== -->
+  <section id="reading-scene" class="reading-scene" aria-hidden="true">
+
+    <div class="reading-topbar">
+      <button id="close-letter" class="close-letter">↺ cerrar</button>
+      <p id="letter-meta" class="letter-meta">carta 1</p>
+    </div>
+
+    <div class="paper-card-wrap">
+      <div id="paper-card" class="paper-card">
+        <div class="paper-card-texture" aria-hidden="true"></div>
+
+        <div id="letter-loading" class="letter-loading">
+          <span class="loading-heart">♥</span>
+          <p>abriendo…</p>
+        </div>
+
+        <div id="letter-fallback" class="letter-fallback" hidden>
+          <p class="fallback-title">Aún no hay cartas aquí</p>
+          <p class="fallback-body">Abre <code>js/cartas.js</code> y añade tu primera carta siguiendo el ejemplo de dentro. En cuanto guardes el archivo, aparecerá aquí — no hace falta servidor ni tocar nada más.</p>
+        </div>
+
+        <article id="letter-content" class="letter-content"></article>
+      </div>
+
+      <div class="page-turn-shadow" id="page-shadow" aria-hidden="true"></div>
+    </div>
+
+    <div class="reading-nav">
+      <button id="prev-btn" class="nav-btn nav-prev" disabled>
+        <span class="nav-arrow">←</span> <span class="nav-label">anterior</span>
+      </button>
+      <div class="nav-dots" id="nav-dots" aria-hidden="true"></div>
+      <button id="next-btn" class="nav-btn nav-next">
+        <span class="nav-label">sigue</span> <span class="nav-arrow">→</span>
+      </button>
+    </div>
+
+    <p class="keyboard-hint">usa ← → o desliza para pasar la página</p>
+
+    <nav class="hub-nav" aria-label="más para explorar">
+      <a href="razones.html" class="hub-link"><span class="hub-link-icon">✦</span> 100 razones</a>
+      <a href="galeria.html" class="hub-link"><span class="hub-link-icon">🕐</span> nuestra línea del tiempo</a>
+    </nav>
+
+  </section>
+
+  <script src="js/enhance.js"></script>
+  <script src="js/cartas.js"></script>
+  <script src="js/letter.js"></script>
+</body>
+</html>
