@@ -1,55 +1,77 @@
-import { check } from "@tauri-apps/plugin-updater";
-import { relaunch } from "@tauri-apps/api/process";
+document.body.style.background = "#222";
 
-async function checkForUpdates() {
-  alert("🚀 Updater started");
+document.body.insertAdjacentHTML(
+  "beforeend",
+  `
+  <div id="debug-box" style="
+    position:fixed;
+    top:20px;
+    left:20px;
+    right:20px;
+    z-index:999999;
+    background:#111;
+    color:#00ff00;
+    padding:20px;
+    font-family:monospace;
+    white-space:pre-wrap;
+    border:2px solid #00ff00;
+    max-height:80vh;
+    overflow:auto;
+  ">
+  Loading updater...
+  </div>
+`
+);
 
+function log(msg) {
+  console.log(msg);
+  document.getElementById("debug-box").innerHTML += "\n" + msg;
+}
+
+log("✅ updater.js loaded");
+
+(async () => {
   try {
-    alert("🔍 Checking GitHub for updates...");
+    log("Importing updater...");
 
-    const update = await check();
+    const updater = await import("@tauri-apps/plugin-updater");
 
-    alert("✅ check() finished");
+    log("✅ updater imported");
+
+    const process = await import("@tauri-apps/api/process");
+
+    log("✅ process imported");
+
+    log("Checking for updates...");
+
+    const update = await updater.check();
 
     if (!update) {
-      alert("❌ No update available (check() returned null)");
+      log("❌ No update available.");
       return;
     }
 
-    alert(
-      "🎉 UPDATE FOUND!\n\n" +
-      "Current Version: " + update.currentVersion + "\n" +
-      "Latest Version: " + update.version
-    );
+    log("✅ Update found!");
 
-    alert("⬇️ Starting download...");
+    log("Current: " + update.currentVersion);
+    log("Latest : " + update.version);
+
+    log("Downloading...");
 
     await update.downloadAndInstall();
 
-    alert("✅ Download and installation completed!");
+    log("✅ Installed");
 
-    alert("🔄 Relaunching app...");
+    log("Restarting...");
 
-    await relaunch();
-  } catch (err) {
-    alert(
-      "💥 ERROR!\n\n" +
-      "Type: " + typeof err + "\n\n" +
-      "Message:\n" + String(err)
-    );
+    await process.relaunch();
 
-    if (err?.message) {
-      alert("Error message:\n\n" + err.message);
+  } catch (e) {
+    log("💥 ERROR:");
+    log(String(e));
+
+    if (e.stack) {
+      log(e.stack);
     }
-
-    if (err?.stack) {
-      alert("Stack:\n\n" + err.stack);
-    }
-
-    alert("JSON:\n\n" + JSON.stringify(err, null, 2));
   }
-}
-
-window.addEventListener("DOMContentLoaded", () => {
-  checkForUpdates();
-});
+})();
